@@ -11,9 +11,20 @@ function moveCharLeft() {
     character1.style.left = character1Left + 'px';
 }
 
-function moveCharLeft() {
-    character1Left -= 15;
+function moveCharRight() {
+    character1Left += 15;
     character1.style.left = character1Left + 'px';
 }
 
-setTimeout(moveCharLeft,2000);
+function control(e) {
+    console.log(e.key);
+
+    if (e.key == "ArrowLeft") {
+        moveCharLeft();
+    }
+    if (e.key == "ArrowRight") {
+        moveCharRight();
+    }
+}
+
+document.addEventListener("keydown", control);
