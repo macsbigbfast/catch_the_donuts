@@ -1,0 +1,68 @@
+/* TO REMOVE LATER */
+/* * {
+    border: solid black;
+} */ 
+
+body {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Londrina Shadow', cursive;
+}
+
+#title h1 {
+    font-size: 3em;
+}
+
+#top-section {
+    font-family: 'Klee One', cursive;
+    display: flex;
+    justify-content: space-around;
+}
+
+#point-counter, #countdown {
+    width: 25%;
+    border: solid black;
+}
+
+#point-counter {
+    background-color: #ffc500;
+}
+
+h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#action-area {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+#left-branch {
+    height: 20px;
+    background-color: #786d3e;
+}
+
+#flying-objects {
+    height: 350px;
+}
+
+#see-saw {
+    height: 15px;
+    width: 100%;
+    background-color:#aab1b0;
+    position: absolute;
+    bottom: 0;
+}
+
+#character1 {
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+}
