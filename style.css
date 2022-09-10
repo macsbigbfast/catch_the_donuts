@@ -38,6 +38,7 @@ h2, h3 {
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
+    border: solid;
 }
 
 #left-branch {
@@ -47,6 +48,14 @@ h2, h3 {
 
 #flying-objects {
     height: 350px;
+}
+
+.donut {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: greenyellow;
+    position: absolute;
 }
 
 #see-saw {
@@ -61,7 +70,6 @@ h2, h3 {
     height: 30px;
     width: 30px;
     background-color: red;
-    border-radius: 50%;
     position: absolute;
     bottom: 15px;
     left: 50%;
