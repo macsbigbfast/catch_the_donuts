@@ -12,7 +12,9 @@ let character1Bottom = parseInt(window.getComputedStyle(character1).getPropertyV
 
 const flyingObjects = document.getElementById("flying-objects");
 
-let points = 0;
+let points = document.getElementById("points");
+
+let timer = document.getElementById("timer");
 
 /* =========================================
 // DECLARATIVE FUNCTIONS
