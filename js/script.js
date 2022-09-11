@@ -4,11 +4,27 @@
 // VARIABLES
 ========================================= */
 
+const seesaw = document.getElementById("see-saw");
+
+const seesawWidth = seesaw.offsetWidth;
+
+// const branches = document.getElementById("branches");
+
+// const branchesHeight = branches.offsetHeight;
+
+// const branchesBottom = branches.getBoundingClientRect().bottom;
+
 const character1 = document.getElementById("character1");
+
+// const character1Height = character1.offsetHeight;
+
+const character1Width = character1.offsetWidth;
 
 let character1Left = parseInt(window.getComputedStyle(character1).getPropertyValue("left"));
 
 let character1Bottom = parseInt(window.getComputedStyle(character1).getPropertyValue("bottom"));
+
+let character1Jumping = false;
 
 const flyingObjects = document.getElementById("flying-objects");
 
@@ -54,17 +70,39 @@ generateDonuts();
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
 ========================================= */
 
-// moves left by 15px
+// for character jumping
+function jump() {
+    if (character1Jumping) return
+    const upTime = setInterval(function(){
+        if (character1Bottom > 370) { // to update 370 from fixed to dynamic
+            clearInterval(upTime);
+            // const downTime = setInterval(function(){
+            //     if (character1Bottom < 15) {
+            //         clearInterval(downTime);
+            //         character1Jumping = false;
+            //     }
+            //         character1Bottom -= 5;
+            //         character1.style.bottom = character1Bottom + "px";
+            //     }
+            // )
+        }   
+        character1Jumping = true;
+        character1Bottom += 10;
+        character1.style.bottom = character1Bottom + "px";
+    }, 20);
+}
+
+// character moves left by 15px
 function moveCharLeft() {
-    if (character1Left > 15) { // 15 is the current width of the character
+    if (character1Left > character1Width*0.5) { // 15 is the current width of the character
         character1Left -= 15; 
         character1.style.left = character1Left + "px";
     }
 }
 
-// moves right by 15px
+// character moves right by 15px
 function moveCharRight() {
-    if (character1Left < 1075) { // 1075 is current width of game area minus current width of character
+    if (character1Left < (seesawWidth - character1Width*1.5)) { // 1075 is current width of game area minus current width of character
         character1Left += 15; 
         character1.style.left = character1Left + "px";
     }
@@ -73,6 +111,9 @@ function moveCharRight() {
 function control(e) {
     console.log(e.key);
 
+    if (e.key === " " || e.key === "Spacebar") {
+        jump();
+    }
     if (e.key == "ArrowLeft") {
         moveCharLeft();
     }
