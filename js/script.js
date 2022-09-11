@@ -92,6 +92,29 @@ function pointUpdate() {
     document.getElementById("points").innerText = points;
 }
 
+function startTimer() {
+    let timeLeft = 60;
+
+    let timerCountdown = setInterval(function() {
+        if (timeLeft === 0) {
+            clearInterval(timerCountdown);
+        }
+        
+        timeLeft--;
+
+        if (timeLeft < 10) {
+            timeLeft = "0" + timeLeft;
+        }
+        
+        timer.innerText = timeLeft;
+    }, 1000)
+}
+
+// function gameStart() {
+//     startTimer();
+//     generateDonuts();
+// }
+
 /* =========================================
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
 ========================================= */
@@ -160,5 +183,7 @@ function control(e) {
 ========================================= */
 
 generateDonuts();
+
+startTimer();
 
 document.addEventListener("keydown", control);
