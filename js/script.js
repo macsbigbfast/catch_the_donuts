@@ -24,7 +24,7 @@ let character1Left = parseInt(window.getComputedStyle(character1).getPropertyVal
 
 let character1Bottom = parseInt(window.getComputedStyle(character1).getPropertyValue("bottom"));
 
-let character1Jumping = false;
+let character1JumpUp = true;
 
 const flyingObjects = document.getElementById("flying-objects");
 
@@ -70,24 +70,26 @@ generateDonuts();
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
 ========================================= */
 
-// for character jumping
-function jump() {
-    if (character1Jumping) return
+// for character jumping up
+function jumpUp() {
     const upTime = setInterval(function(){
         if (character1Bottom > 370) { // to update 370 from fixed to dynamic
-            clearInterval(upTime);
-            // const downTime = setInterval(function(){
-            //     if (character1Bottom < 15) {
-            //         clearInterval(downTime);
-            //         character1Jumping = false;
-            //     }
-            //         character1Bottom -= 5;
-            //         character1.style.bottom = character1Bottom + "px";
-            //     }
-            // )
-        }   
-        character1Jumping = true;
+            clearInterval(upTime); // stops character from going up once it has hit ceiling
+            character1JumpUp = false; // next jump to go down
+            }   
         character1Bottom += 10;
+        character1.style.bottom = character1Bottom + "px";
+    }, 20);
+}
+
+// for character jumping down
+function jumpDown() {
+    const downTime = setInterval(function(){
+        if (character1Bottom < 15) { // to update 15 from fixed to dynamic
+            clearInterval(downTime); // stops character from gg down once it has hit bottom
+            character1JumpUp = true; // next jump to go up
+            }   
+        character1Bottom -= 10;
         character1.style.bottom = character1Bottom + "px";
     }, 20);
 }
@@ -112,8 +114,13 @@ function control(e) {
     console.log(e.key);
 
     if (e.key === " " || e.key === "Spacebar") {
-        jump();
-    }
+        if (character1JumpUp) {
+            jumpUp();
+            }
+        if (!character1JumpUp) {
+            jumpDown();
+            }
+        }
     if (e.key == "ArrowLeft") {
         moveCharLeft();
     }
