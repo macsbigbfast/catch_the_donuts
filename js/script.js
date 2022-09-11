@@ -16,13 +16,21 @@ const seesawWidth = seesaw.offsetWidth;
 
 const character1 = document.getElementById("character1");
 
-// const character1Height = character1.offsetHeight;
+const character1Height = character1.getBoundingClientRect().height;
 
 const character1Width = character1.offsetWidth;
 
 let character1Left = parseInt(window.getComputedStyle(character1).getPropertyValue("left"));
 
 let character1Bottom = parseInt(window.getComputedStyle(character1).getPropertyValue("bottom"));
+
+let character1DOMRectX = character1.getBoundingClientRect().x;
+
+let character1DOMRectY = character1.getBoundingClientRect().y;
+
+let character1DOMRectHeight = character1.getBoundingClientRect().height;
+
+let character1DOMRectWidth = character1.getBoundingClientRect().width;
 
 let character1JumpUp = true;
 
@@ -44,16 +52,38 @@ function randomIntFromRange(min, max) {
 function generateDonuts() {
     const donutBottom = randomIntFromRange(70,370); // randomly generate a height from the seesaw
     let donutLeft = -30; //lets donut start from out of view
-
     const donut = document.createElement("div");
     donut.className = "donut";
     flyingObjects.append(donut);
 
+    let donutRadius = donut.getBoundingClientRect().width / 2;
+    let donutDOMRectX = donut.getBoundingClientRect().x;
+    let donutDOMRectY = donut.getBoundingClientRect().y;
+
     function slideDonut() {
-        if (donutBottom < character1Bottom && donutBottom > character1Bottom && donutLeft > character1Left && donutLeft < character1Left) { //criteria for char to touch donut
-            flyingObjects.removeChild(donut); // once touched, remove donut
-            clearInterval(slideInterval); // stop slide as well
-            points++;
+        let testX = null;
+        let testY = null;
+
+        if (donutDOMRectX < character1DOMRectX) {
+            testX = character1DOMRectX;
+        } else if (donutDOMRectX > (character1DOMRectX + character1DOMRectWidth)) {
+            testX = character1DOMRectX + character1DOMRectWidth;
+        }
+        if (donutDOMRectY < character1DOMRectY) {
+            testY = character1DOMRectY;
+        } else if (donutDOMRectY > (character1DOMRectY + character1DOMRectHeight)) {
+            testY = character1DOMRectY + character1DOMRectHeight;
+        }
+
+        let distanceX = donutDOMRectX - testX;
+        let distanceY = donutDOMRectY - testY;
+        let distance = Math.sqrt((distanceX ** 2) + (distanceY ** 2));
+
+        if (distance <= donutRadius) {
+            console.log("collision!  ")
+                donut.remove(); // once touched, remove donut
+                clearInterval(slideInterval); // stop slide as well
+                points++;    
         }
         donutLeft += 10; // moves donut to the right by 10px
         donut.style.left = donutLeft + "px";
@@ -64,7 +94,6 @@ function generateDonuts() {
     const donutTimeout = setTimeout(generateDonuts, 2000) // sets timer for new donuts to generate
 }
 
-generateDonuts();
 
 /* =========================================
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
@@ -132,5 +161,7 @@ function control(e) {
 /* =========================================
 // EVENT LISTENERS
 ========================================= */
+
+generateDonuts();
 
 document.addEventListener("keydown", control);
