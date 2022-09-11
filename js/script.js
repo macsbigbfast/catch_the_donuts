@@ -55,25 +55,12 @@ function generateDonuts() {
     flyingObjects.append(donut);
 
     function slideDonut() {
-        function collisionDetection() {
-            let donutRadius = donut.getBoundingClientRect().width / 2;
-            let donutDOMRectX = donut.getBoundingClientRect().x;
-            let donutDOMRectY = donut.getBoundingClientRect().y;
-            let donutx = donutDOMRectX + donutRadius;
-            let donuty = donutDOMRectY + donutRadius;
-
-            let distanceX = character1x - donutx;
-            let distanceY = character1y - donuty;
-            let distance = Math.sqrt((distanceX ** 2) + (distanceY ** 2));
-
-            if (distance < donutRadius + (character1DOMRectWidth / 2)) {
-                console.log("collision!  ");
-                donut.remove(); // once touched, remove donut
-                clearInterval(slideInterval); // stop slide as well
-                points++;
+        if (collisionDetection()) {
+            console.log("collision!");
+            donut.remove(); // once touched, remove donut
+            clearInterval(slideInterval); // stop slide as well
+            points++;
         }
-    }
-        collisionDetection();
 
         donutLeft += 10; // moves donut to the right by 10px
         donut.style.left = donutLeft + "px";
@@ -84,24 +71,28 @@ function generateDonuts() {
     }
 
     const slideInterval = setInterval(slideDonut, 100); //sets time interval for sliding donuts
-    // const donutTimeout = setTimeout(generateDonuts, 2000) // sets timer for new donuts to generate
+    const donutTimeout = setTimeout(generateDonuts, 2000) // sets timer for new donuts to generate
 }
 
+function getDonutRects() {
+    return [...document.querySelectorAll(".donut")].map(donut => { // convert Nodelist to Array using "...", then return a new array containing the Rect result for all donuts in original array
+        return donut.getBoundingClientRect();
+    })
+}
 
-//     console.log(
-//         `character1x: ${character1x}
-//         character1y: ${character1y}
-//         donut radius: ${donutRadius}
-//         donutDOMRectX: ${donutDOMRectX}
-//         donutDOMRectY: ${donutDOMRectY}
-//         donutx: ${donutx}
-//         donuty: ${donuty}
-//         distanceX: ${distanceX}
-//         distanceY: ${distanceY}
-//         distance: ${distance}
-//         `
-//     )
+function collisionDetection() {
+    const char1Rect = character1.getBoundingClientRect();
+    return getDonutRects().some(rect => isCollision(rect, char1Rect))
+}
 
+function isCollision(rect1, rect2) {
+    return (
+        rect1.left < rect2.right &&
+        rect1.top < rect2.bottom &&
+        rect1.right > rect2.left &&
+        rect1.bottom > rect2.top
+    )
+}
 
 /* =========================================
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
