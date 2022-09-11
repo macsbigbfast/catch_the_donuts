@@ -10,32 +10,18 @@ const seesawWidth = seesaw.offsetWidth;
 
 const character1 = document.getElementById("character1");
 
-const character1Height = character1.getBoundingClientRect().height;
-
 const character1Width = character1.offsetWidth;
 
 let character1Left = parseInt(window.getComputedStyle(character1).getPropertyValue("left"));
 
 let character1Bottom = parseInt(window.getComputedStyle(character1).getPropertyValue("bottom"));
 
-let character1DOMRectX = character1.getBoundingClientRect().x;
-
-let character1DOMRectY = character1.getBoundingClientRect().y;
-
-let character1DOMRectHeight = character1.getBoundingClientRect().height;
-
-let character1DOMRectWidth = character1.getBoundingClientRect().width;
-
-let character1x = character1DOMRectX + character1DOMRectWidth / 2;
-
-let character1y = character1DOMRectY + character1DOMRectHeight / 2;
-
 let character1JumpUp = true;
 
 const flyingObjects = document.getElementById("flying-objects");
 
-let points = document.getElementById("points");
-
+let points = 0;
+ 
 let timer = document.getElementById("timer");
 
 /* =========================================
@@ -56,10 +42,9 @@ function generateDonuts() {
 
     function slideDonut() {
         if (collisionDetection()) {
-            console.log("collision!");
-            donut.remove(); // once touched, remove donut
-            clearInterval(slideInterval); // stop slide as well
+            // console.log("collision!");
             points++;
+            pointUpdate();
         }
 
         donutLeft += 10; // moves donut to the right by 10px
@@ -74,17 +59,25 @@ function generateDonuts() {
     const donutTimeout = setTimeout(generateDonuts, 2000) // sets timer for new donuts to generate
 }
 
-function getDonutRects() {
-    return [...document.querySelectorAll(".donut")].map(donut => { // convert Nodelist to Array using "...", then return a new array containing the Rect result for all donuts in original array
-        return donut.getBoundingClientRect();
-    })
-}
-
+// where collision is detected, removes donut collided & returns true / false 
 function collisionDetection() {
     const char1Rect = character1.getBoundingClientRect();
-    return getDonutRects().some(rect => isCollision(rect, char1Rect))
+    const donutArray = [...document.querySelectorAll(".donut")]; // convert Nodelist to Array using "..."
+    const donutRectArray = donutArray.map(donut => { // return a new array containing the Rect result for each donut in original array
+        return donut.getBoundingClientRect();
+    })
+
+    const collisionArray = donutRectArray.map(rect => isCollision(rect, char1Rect));
+
+    for (let i = 0; i < collisionArray.length; i++) {
+        if (collisionArray[i]) {
+            donutArray[i].remove(); // once collided, remove donut
+            return true;
+        }
+    }
 }
 
+// compares rect between donut & character 1 for collision
 function isCollision(rect1, rect2) {
     return (
         rect1.left < rect2.right &&
@@ -92,6 +85,11 @@ function isCollision(rect1, rect2) {
         rect1.right > rect2.left &&
         rect1.bottom > rect2.top
     )
+}
+
+// updates points
+function pointUpdate() {
+    document.getElementById("points").innerText = points;
 }
 
 /* =========================================
