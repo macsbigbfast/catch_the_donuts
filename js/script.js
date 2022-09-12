@@ -32,6 +32,8 @@ let points = 0;
  
 let timer = document.getElementById("timer");
 
+const startGameButton = document.getElementById("start-game-button");
+
 /* =========================================
 // DECLARATIVE FUNCTIONS
 ========================================= */
@@ -141,9 +143,13 @@ function startTimer() {
     
 }
 
-function gameStart() {
-    startTimer();
-    generateDonuts();
+// starts the game & toggles between start screen & game
+function startGame(e) {
+        console.log("game started!");
+        //     toggleScreen("start-screen", false);
+        //     toggleScreen("game", true);
+            startTimer();
+            generateDonuts();
 }
 
 /* =========================================
@@ -218,11 +224,13 @@ function control(e) {
 // EVENT LISTENERS
 ========================================= */
 
-gameStart();
+// startGame();
+startGameButton.addEventListener("mouseup", function(e) {
+    if (e.button === 0) {
+        startGame();
+    }
+});
 
 document.addEventListener("keydown", control);
-
-console.log(`leftBranchBottom ${leftBranchBottom}`);
-console.log(`character1Bottom ${character1Bottom}`);
 
 });
