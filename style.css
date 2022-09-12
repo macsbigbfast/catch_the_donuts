@@ -14,16 +14,38 @@ body {
     font-size: 3em;
 }
 
+#title h1 span:nth-child(5n + 1) {
+    color: #7e31dd;
+}
+
+#title h1 span:nth-child(5n + 2) {
+    color: #EC2A9F;
+}
+
+#title h1 span:nth-child(5n + 3) {
+    color: #FEDE0C;
+}
+
+#title h1 span:nth-child(5n + 4) {
+    color: #009DD2;
+}
+
+#title h1 span:nth-child(5n + 5) {
+    color: #00CEB2;
+}
+
 #top-section {
     font-family: 'Klee One', cursive;
     display: flex;
     justify-content: space-around;
     position: relative;
+    padding-bottom: 10px;
 }
 
 #point-counter, #countdown {
     width: 25%;
     border: solid black;
+    border-radius: 25px;
 }
 
 #point-counter {
