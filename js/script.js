@@ -41,16 +41,17 @@ function generateDonuts() {
     flyingObjects.append(donut);
 
     function slideDonut() {
-        if (collisionDetection()) {
-            // console.log("collision!");
-            points++;
-            pointUpdate();
-        }
+       
+        // check collision
+        collisionDetection();
 
-        donutLeft += 10; // moves donut to the right by 10px
+        // slides donut across screen to the right
+        donutLeft += 10; 
         donut.style.left = donutLeft + "px";
         donut.style.bottom = donutBottom + "px";
-        if (donutLeft > seesawWidth) { // removes donut once it is out of view
+
+        // removes donut once it is out of view
+        if (donutLeft > seesawWidth) { 
             donut.remove();
         }
     }
@@ -67,24 +68,41 @@ function collisionDetection() {
         return donut.getBoundingClientRect();
     })
 
-    const collisionArray = donutRectArray.map(rect => isCollision(rect, char1Rect));
+    const collisionArray = donutRectArray.map(donutRect => { // compares rect between donut & character 1 for collision, and returns true/false for each donut in a new array
+        return (
+            donutRect.left < char1Rect.right &&
+            donutRect.top < char1Rect.bottom &&
+            donutRect.right > char1Rect.left &&
+            donutRect.bottom > char1Rect.top
+        );
+    });
 
-    for (let i = 0; i < collisionArray.length; i++) {
+    for (let i = 0; i < collisionArray.length; i++) { // loops through array to check collision = true for each donut
         if (collisionArray[i]) {
-            donutArray[i].remove(); // once collided, remove donut
+
+            // if true, create a pop-up message at point of collision showing points earned
+            const popupText = document.createElement("h4");
+            popupText.className = "popup-text";
+            popupText.innerText = "+1"
+            donutArray[i].parentNode.append(popupText);
+            popupText.style.left = donutArray[i].style.left;
+            popupText.style.bottom = donutArray[i].style.bottom;
+
+            setTimeout(function() {
+                popupText.remove();
+            }, 1500);
+
+            // update points
+            points++;
+            pointUpdate();
+
+            // once collided, remove donut
+            donutArray[i].remove(); 
+
+            // return true / false for this function
             return true;
         }
     }
-}
-
-// compares rect between donut & character 1 for collision
-function isCollision(rect1, rect2) {
-    return (
-        rect1.left < rect2.right &&
-        rect1.top < rect2.bottom &&
-        rect1.right > rect2.left &&
-        rect1.bottom > rect2.top
-    )
 }
 
 // updates points
@@ -93,7 +111,7 @@ function pointUpdate() {
 }
 
 function startTimer() {
-    let timeLeft = 10; // to update to 60
+    let timeLeft = 10; // TODO: to update to 60
 
     let timerCountdown = setInterval(function() {
 
@@ -127,7 +145,7 @@ function gameStart() {
 // for character jumping up
 function jumpUp() {
     const upTime = setInterval(function(){
-        if (character1Bottom > 370) { // to update 370 from fixed to dynamic
+        if (character1Bottom > 370) { // TODO: to update 370 from fixed to dynamic
             clearInterval(upTime); // stops character from going up once it has hit ceiling
             character1JumpUp = false; // next jump to go down
             }   
@@ -139,7 +157,7 @@ function jumpUp() {
 // for character jumping down
 function jumpDown() {
     const downTime = setInterval(function(){
-        if (character1Bottom < 15) { // to update 15 from fixed to dynamic
+        if (character1Bottom < 15) { // TODO: to update 15 from fixed to dynamic
             clearInterval(downTime); // stops character from gg down once it has hit bottom
             character1JumpUp = true; // next jump to go up
             }   
@@ -188,9 +206,5 @@ function control(e) {
 ========================================= */
 
 gameStart();
-
-// generateDonuts();
-
-// startTimer();
 
 document.addEventListener("keydown", control);
