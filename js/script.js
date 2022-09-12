@@ -89,7 +89,7 @@ function collisionDetection() {
         if (collisionArray[i]) {
 
             // if true, create a pop-up message at point of collision showing points earned
-            const popupText = document.createElement("h4");
+            const popupText = document.createElement("h3");
             popupText.className = "popup-text";
             popupText.innerText = "+1"
             donutArray[i].parentNode.append(popupText);
