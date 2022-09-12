@@ -19,7 +19,7 @@ body {
 }
 
 #game {
-    /* display: none; */
+    display: none;
 }
 
 #title h1 {

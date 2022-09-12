@@ -143,18 +143,25 @@ function startTimer() {
     
 }
 
-// starts the game & toggles between start screen & game
-function startGame(e) {
-        console.log("game started!");
-        //     toggleScreen("start-screen", false);
-        //     toggleScreen("game", true);
-            startTimer();
-            generateDonuts();
-}
-
 /* =========================================
 // CALLBACK FUNCTIONS FOR EVENT LISTENERS
 ========================================= */
+
+// starts the game & toggles between start screen & game
+function startGame(e) {
+    console.log("game started!");
+        toggleScreen("start-screen", false);
+        toggleScreen("game", true);
+        startTimer();
+        generateDonuts();
+}
+
+// toggles screen depending on toggle is true or false for specified id parameter
+function toggleScreen(id, toggle) {
+    let element = document.getElementById(id);
+    let display = (toggle) ? "block" : "none";
+    element.style.display = display;
+}
 
 // for character jumping up
 function jumpUp() {
