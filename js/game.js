@@ -37,6 +37,12 @@ window.addEventListener("load", function () {
 
   let timer = document.getElementById("timer");
 
+  let timeLeft = 10;
+
+  // let donutTimeout = null;
+
+  // let donutInterval = null;
+
   /* =========================================
   // DECLARATIVE FUNCTIONS
   ========================================= */
@@ -54,6 +60,8 @@ window.addEventListener("load", function () {
     flyingObjects.append(donut);
 
     function slideDonut() {
+      console.log("donut created & sliding...")
+
       // check collision
       collisionDetection();
 
@@ -68,8 +76,32 @@ window.addEventListener("load", function () {
       }
     }
 
-    const slideInterval = setInterval(slideDonut, 100); //sets time interval for sliding donuts
-    const donutTimeout = setTimeout(generateDonuts, 2000); // sets timer for new donuts to generate
+    //sets time interval for sliding donuts
+    const donutInterval = setInterval(function () {
+      if (timeLeft === 0) {
+        console.log("donutInterval ends");
+        clearInterval(donutInterval);
+      }
+      
+      if (timeLeft > 0) {
+      slideDonut();
+      }
+
+    }, 100); 
+
+    // sets timer for new donuts to generate
+    const donutTimeout = setTimeout(function() {
+      if (timeLeft === 0) {
+        console.log("donutTimeout ends");
+        clearTimeout(donutTimeout);
+      }
+  
+      if (timeLeft > 0) {
+      generateDonuts();
+      }
+      
+    }, 2000);   
+
   }
 
   // where collision is detected, removes donut collided & returns true / false
@@ -102,6 +134,7 @@ window.addEventListener("load", function () {
         popupText.style.left = donutArray[i].style.left;
         popupText.style.bottom = donutArray[i].style.bottom;
 
+        // remove popup text after a few seconds
         setTimeout(function () {
           popupText.remove();
         }, 1500);
@@ -124,8 +157,10 @@ window.addEventListener("load", function () {
     document.getElementById("points").innerText = points;
   }
 
+  // timer
   function startTimer() {
-    let timeLeft = 60;
+    // let timeLeft = 10;
+    timer.innerText = timeLeft;
 
     let timerCountdown = setInterval(function () {
       if (timeLeft === 0) {
@@ -143,6 +178,12 @@ window.addEventListener("load", function () {
       timer.innerText = timeLeft;
     }, 1000);
   }
+
+  // stops game
+  // function stopGame() {
+  //   clearTimeout(donutTimeout);
+  //   clearInterval(donutInterval);
+  // }
 
   /* =========================================
   // CALLBACK FUNCTIONS FOR EVENT LISTENERS
