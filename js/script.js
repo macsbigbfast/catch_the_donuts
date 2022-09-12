@@ -8,6 +8,12 @@ const seesaw = document.getElementById("see-saw");
 
 const seesawWidth = seesaw.offsetWidth;
 
+const seesawHeight = seesaw.offsetHeight;
+
+const leftBranch = document.getElementById("left-branch");
+
+const leftBranchBottom = parseInt(window.getComputedStyle(leftBranch).getPropertyValue("bottom"));
+
 const character1 = document.getElementById("character1");
 
 const character1Width = character1.offsetWidth;
@@ -145,30 +151,35 @@ function gameStart() {
 // for character jumping up
 function jumpUp() {
     const upTime = setInterval(function(){
-        if (character1Bottom > 370) { // TODO: to update 370 from fixed to dynamic
+        if (character1Bottom > leftBranchBottom) { 
             clearInterval(upTime); // stops character from going up once it has hit ceiling
             character1JumpUp = false; // next jump to go down
             }   
+
         character1Bottom += 10;
         character1.style.bottom = character1Bottom + "px";
+        
     }, 20);
 }
 
 // for character jumping down
 function jumpDown() {
     const downTime = setInterval(function(){
-        if (character1Bottom < 15) { // TODO: to update 15 from fixed to dynamic
+        if (character1Bottom <= seesawHeight) {
             clearInterval(downTime); // stops character from gg down once it has hit bottom
             character1JumpUp = true; // next jump to go up
-            }   
-        character1Bottom -= 10;
-        character1.style.bottom = character1Bottom + "px";
-    }, 20);
+            }
+
+        if (character1Bottom > seesawHeight) {
+            character1Bottom -= 5;
+            character1.style.bottom = character1Bottom + "px";    
+        }
+    }, 10);
 }
 
 // character moves left by 15px
 function moveCharLeft() {
-    if (character1Left > character1Width*0.5) { // 15 is the current width of the character
+    if (character1Left > character1Width*0.5) {
         character1Left -= 15; 
         character1.style.left = character1Left + "px";
     }
@@ -176,7 +187,7 @@ function moveCharLeft() {
 
 // character moves right by 15px
 function moveCharRight() {
-    if (character1Left < (seesawWidth - character1Width*1.5)) { // 1075 is current width of game area minus current width of character
+    if (character1Left < (seesawWidth - character1Width*1.5)) {
         character1Left += 15; 
         character1.style.left = character1Left + "px";
     }
@@ -208,3 +219,6 @@ function control(e) {
 gameStart();
 
 document.addEventListener("keydown", control);
+
+console.log(`leftBranchBottom ${leftBranchBottom}`);
+console.log(`character1Bottom ${character1Bottom}`);

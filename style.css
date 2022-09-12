@@ -18,6 +18,7 @@ body {
     font-family: 'Klee One', cursive;
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 
 #point-counter, #countdown {
@@ -39,11 +40,15 @@ h2, h3 {
     padding-bottom: 50px;
     position: relative;
     border: solid;
+    position: relative;
 }
 
 #left-branch {
     height: 20px;
+    width: 100%;
     background-color: #786d3e;
+    position: absolute;
+    bottom: 300px;
 }
 
 #flying-objects {
