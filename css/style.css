@@ -10,6 +10,18 @@ body {
     font-family: 'Londrina Shadow', cursive;
 }
 
+#start-screen {
+    display: block;
+}
+
+#start-game-button {
+
+}
+
+#game {
+    /* display: none; */
+}
+
 #title h1 {
     font-size: 3em;
 }
