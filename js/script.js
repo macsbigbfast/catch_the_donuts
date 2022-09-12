@@ -1,5 +1,7 @@
 "use strict"
 
+window.addEventListener("load", function() {
+
 /* =========================================
 // VARIABLES
 ========================================= */
@@ -40,7 +42,7 @@ function randomIntFromRange(min, max) {
 
 // Generate random donuts
 function generateDonuts() {
-    const donutBottom = randomIntFromRange(70,370); // randomly generate a height from the seesaw
+    const donutBottom = randomIntFromRange(70,300); // randomly generate a height b/w the seesaw & branches
     let donutLeft = -30; //lets donut start from out of view
     const donut = document.createElement("div");
     donut.className = "donut";
@@ -222,3 +224,5 @@ document.addEventListener("keydown", control);
 
 console.log(`leftBranchBottom ${leftBranchBottom}`);
 console.log(`character1Bottom ${character1Bottom}`);
+
+});
