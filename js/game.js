@@ -39,10 +39,6 @@ window.addEventListener("load", function () {
 
   let timeLeft = 10;
 
-  // let donutTimeout = null;
-
-  // let donutInterval = null;
-
   /* =========================================
   // DECLARATIVE FUNCTIONS
   ========================================= */
@@ -93,13 +89,14 @@ window.addEventListener("load", function () {
     const donutTimeout = setTimeout(function() {
       if (timeLeft === 0) {
         console.log("donutTimeout ends");
+        stopGame();
         clearTimeout(donutTimeout);
       }
   
       if (timeLeft > 0) {
       generateDonuts();
       }
-      
+
     }, 2000);   
 
   }
@@ -159,7 +156,7 @@ window.addEventListener("load", function () {
 
   // timer
   function startTimer() {
-    // let timeLeft = 10;
+
     timer.innerText = timeLeft;
 
     let timerCountdown = setInterval(function () {
@@ -170,9 +167,9 @@ window.addEventListener("load", function () {
       if (timeLeft > 0) {
         timeLeft--;
 
-        if (timeLeft < 10) {
-          timeLeft = "0" + timeLeft;
-        }
+        // if (timeLeft < 10) {
+        //   timeLeft = "0" + timeLeft;
+        // }
       }
 
       timer.innerText = timeLeft;
@@ -180,10 +177,10 @@ window.addEventListener("load", function () {
   }
 
   // stops game
-  // function stopGame() {
-  //   clearTimeout(donutTimeout);
-  //   clearInterval(donutInterval);
-  // }
+  function stopGame() {
+    console.log("game over screen activating");
+    document.getElementById("game-over").className = "game-over-active";
+  }
 
   /* =========================================
   // CALLBACK FUNCTIONS FOR EVENT LISTENERS
@@ -266,5 +263,6 @@ window.addEventListener("load", function () {
   startGame();
 
   document.addEventListener("keydown", control);
+
   
 });
