@@ -121,21 +121,33 @@ h2, h3 {
     width: 100%;
     opacity: 0.5;
     background-color: grey;
-
+    text-align: center;
 }
 
 #game-over-screen {
     display: none;
     position: absolute;
+    top: 30%;
+    left: 25%;
+    bottom: 30%;
+    right: 25%;
     z-index: 10;
     opacity: 1;
-    height: 250px;
-    width: 250px;
+    height: 40%;
+    width: 50%;
     background-color: #ffc500;
+    border-radius: 25px;
+    border: thick solid white;
 }
 
 #game-over-text {
     display: none;
+    font-size: 2.5em;
+    margin-top: 15%;
+}
+
+#replay-button {
+    height: 80px;
 }
 
 footer {

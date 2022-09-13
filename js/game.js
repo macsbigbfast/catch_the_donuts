@@ -260,6 +260,12 @@ window.addEventListener("load", function () {
     }
   }
 
+  function restartGame(e) {
+    if (e.button === 0) {
+      window.location.replace("start_screen.html");
+    }
+  }
+
   /* =========================================
   // EVENT LISTENERS
   ========================================= */
@@ -268,5 +274,6 @@ window.addEventListener("load", function () {
 
   document.addEventListener("keydown", control);
 
+  this.document.getElementById("replay-button").addEventListener("mouseup", restartGame);
   
 });
