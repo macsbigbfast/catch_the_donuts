@@ -167,12 +167,10 @@ window.addEventListener("load", function () {
       if (timeLeft > 0) {
         timeLeft--;
 
-        // if (timeLeft < 10) {
-        //   timeLeft = "0" + timeLeft;
-        // }
+        timer.innerText = timeLeft;
+
       }
 
-      timer.innerText = timeLeft;
     }, 1000);
   }
 
