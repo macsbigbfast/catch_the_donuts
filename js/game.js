@@ -177,7 +177,13 @@ window.addEventListener("load", function () {
   // stops game
   function stopGame() {
     console.log("game over screen activating");
-    document.getElementById("game-over").className = "game-over-active";
+
+    const gameOverElementList = [document.getElementById("game-over"), document.getElementById("game-over-screen"), document.getElementById("game-over-text")];
+
+    for (let i = 0; i < gameOverElementList.length; i++) {
+        gameOverElementList[i].style.display = "block";
+    }
+
   }
 
   /* =========================================

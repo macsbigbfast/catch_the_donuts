@@ -110,7 +110,8 @@ h2, h3 {
     position:absolute;
 } 
 
-.game-over-active {
+#game-over {
+    display: none;
     position:absolute;
     top: 0;
     left: 0;
@@ -121,6 +122,20 @@ h2, h3 {
     opacity: 0.5;
     background-color: grey;
 
+}
+
+#game-over-screen {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    opacity: 1;
+    height: 250px;
+    width: 250px;
+    background-color: #ffc500;
+}
+
+#game-over-text {
+    display: none;
 }
 
 footer {
