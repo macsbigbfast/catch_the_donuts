@@ -184,6 +184,9 @@ window.addEventListener("load", function () {
         gameOverElementList[i].style.display = "block";
     }
 
+    document.removeEventListener("keydown", control);
+
+
   }
 
   /* =========================================
