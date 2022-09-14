@@ -82,10 +82,12 @@ h2, h3 {
 }
 
 .donut {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+    background-image: url("../images/Base_donut.png");
+    background-size: 100%;
     position: absolute;
 }
 
@@ -98,8 +100,8 @@ h2, h3 {
 }
 
 #character1 {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     background-color: red;
     position: absolute;
     bottom: 15px;
