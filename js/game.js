@@ -29,7 +29,7 @@ window.addEventListener("load", function () {
     window.getComputedStyle(character1).getPropertyValue("bottom")
   );
 
-  let character1Move = true;
+  let character1Move = false;
 
   let character1JumpUp = false;
 
@@ -45,9 +45,9 @@ window.addEventListener("load", function () {
     window.getComputedStyle(character2).getPropertyValue("bottom")
   );
 
-  let character2JumpUp = true;
+  let character2Move = true;
 
-  let character2Move = false;
+  let character2JumpUp = true;
 
   const flyingObjects = document.getElementById("flying-objects");
 
@@ -301,7 +301,7 @@ function char2JumpDown() {
 
   // character 2 moves left by 15px
   function moveChar2Left() {
-    if (character2Left < seesawWidth - character2Width * 1.5 && character2Left > seesawWidth * 0.5) {
+    if (character2Left < seesawWidth && character2Left >= (seesawWidth * 0.5 + character2Width * 2)) {
       character2Left -= 15;
       character2.style.left = character2Left + "px";
     }
@@ -309,15 +309,15 @@ function char2JumpDown() {
 
   // character 1 moves right by 15px
   function moveChar1Right() {
-    if (character1Left < seesawWidth - character1Width * 1.5) {
+    if (character1Left < (seesawWidth - character1Width * 1.5) && character1Left <= (seesawWidth * 0.5 - character2Width * 2)) {
       character1Left += 15;
       character1.style.left = character1Left + "px";
     }
   }
 
     // character 2 moves right by 15px
-    function moveChar1Right() {
-      if (character2Left < seesawWidth - character2Width * 1.5) {
+    function moveChar2Right() {
+      if (character2Left < (seesawWidth - character2Width * 1.5)) {
         character2Left += 15;
         character2.style.left = character2Left + "px";
       }
