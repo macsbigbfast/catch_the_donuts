@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
     const donutTimeout = setTimeout(function () {
       if (timeLeft === 0) {
         console.log("donutTimeout ends");
-        stopGame();
+        // stopGame();
         clearTimeout(donutTimeout);
       }
 

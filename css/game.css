@@ -68,12 +68,16 @@ h2, h3 {
     margin-right: auto;
 }
 
-#left-branch {
+#left-branch, #right-branch {
     height: 20px;
-    width: 100%;
+    width: 45%;
     background-color: #786d3e;
     position: absolute;
     bottom: 300px;
+}
+
+#right-branch {
+    right: 0;
 }
 
 #flying-objects {
