@@ -305,7 +305,7 @@ function char2JumpDown() {
 
   // character 2 moves left by 15px
   function moveChar2Left() {
-    if (character2Left < seesawWidth && character2Left >= (seesawWidth * 0.5 + character2Width * 2)) {
+    if (character2Left < seesawWidth && character2Left >= (seesawWidth * 0.5 + character2Width)) {
       character2Left -= 15;
       character2.style.left = character2Left + "px";
     }
