@@ -55,7 +55,7 @@ window.addEventListener("load", function () {
 
   let timer = document.getElementById("timer");
 
-  let timeLeft = 20;
+  let timeLeft = 60;
 
   /* =========================================
   // DECLARATIVE FUNCTIONS
@@ -82,8 +82,15 @@ window.addEventListener("load", function () {
       // check collision
       collisionDetection();
 
-      // slides donut across screen to the right
-      donutLeft += 10;
+      // slides donut across screen to the right, with increasing speed
+      if (timeLeft > 30) {
+        donutLeft += 10;
+      } else if (timeLeft > 15) {
+        donutLeft += 20;
+      } else if (timeLeft >= 0) {
+        donutLeft += 30;
+      }
+
       donut.style.left = donutLeft + "px";
       donut.style.bottom = donutBottom + "px";
 
@@ -117,8 +124,10 @@ window.addEventListener("load", function () {
         generateDonuts();
       }
     }, 2000);
+
   }
 
+  
   // where collision is detected, removes donut collided & returns true / false
   function collisionDetection() {
     const char1Rect = character1.getBoundingClientRect();
