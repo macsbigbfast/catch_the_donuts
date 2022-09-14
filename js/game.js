@@ -71,13 +71,15 @@ window.addEventListener("load", function () {
   // Generate random donuts
   function generateDonuts() {
     const donutBottom = randomIntFromRange(70, 300); // randomly generate a height b/w the seesaw & branches
-    let donutLeft = -30; //lets donut start from out of view
+    let donutLeft = 0; //lets donut start from out of view
     const donut = document.createElement("div");
     donut.className = "donut";
+    const donutWidth = donut.offsetWidth;
     flyingObjects.append(donut);
 
     function slideDonut() {
-      console.log("donut created & sliding...");
+
+      // console.log("donut created & sliding...");
 
       // check collision
       collisionDetection();
@@ -95,7 +97,7 @@ window.addEventListener("load", function () {
       donut.style.bottom = donutBottom + "px";
 
       // removes donut once it is out of view
-      if (donutLeft > seesawWidth) {
+      if (donutLeft > (seesawWidth - donutWidth)) {
         donut.remove();
       }
     }
