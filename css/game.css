@@ -104,8 +104,17 @@ h2, h3 {
     width: 50px;
     background-color: red;
     position: absolute;
+    bottom: 310px;
+    left: 25%;
+}
+
+#character2 {
+    height: 50px;
+    width: 50px;
+    background-color: palevioletred;
+    position: absolute;
     bottom: 15px;
-    left: 50%;
+    left: 75%;  
 }
 
 .popup-text {

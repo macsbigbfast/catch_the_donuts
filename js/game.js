@@ -29,7 +29,25 @@ window.addEventListener("load", function () {
     window.getComputedStyle(character1).getPropertyValue("bottom")
   );
 
-  let character1JumpUp = true;
+  let character1Move = true;
+
+  let character1JumpUp = false;
+
+  const character2 = document.getElementById("character2");
+
+  const character2Width = character2.offsetWidth;
+
+  let character2Left = parseInt(
+    window.getComputedStyle(character2).getPropertyValue("left")
+  );
+
+  let character2Bottom = parseInt(
+    window.getComputedStyle(character2).getPropertyValue("bottom")
+  );
+
+  let character2JumpUp = true;
+
+  let character2Move = false;
 
   const flyingObjects = document.getElementById("flying-objects");
 
@@ -37,11 +55,14 @@ window.addEventListener("load", function () {
 
   let timer = document.getElementById("timer");
 
-  let timeLeft = 10;
+  let timeLeft = 20;
 
   /* =========================================
   // DECLARATIVE FUNCTIONS
   ========================================= */
+
+  //#region
+
   // Generate a random number
   function randomIntFromRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -56,7 +77,7 @@ window.addEventListener("load", function () {
     flyingObjects.append(donut);
 
     function slideDonut() {
-      console.log("donut created & sliding...")
+      console.log("donut created & sliding...");
 
       // check collision
       collisionDetection();
@@ -78,27 +99,24 @@ window.addEventListener("load", function () {
         console.log("donutInterval ends");
         clearInterval(donutInterval);
       }
-      
-      if (timeLeft > 0) {
-      slideDonut();
-      }
 
-    }, 100); 
+      if (timeLeft > 0) {
+        slideDonut();
+      }
+    }, 100);
 
     // sets timer for new donuts to generate
-    const donutTimeout = setTimeout(function() {
+    const donutTimeout = setTimeout(function () {
       if (timeLeft === 0) {
         console.log("donutTimeout ends");
         stopGame();
         clearTimeout(donutTimeout);
       }
-  
+
       if (timeLeft > 0) {
-      generateDonuts();
+        generateDonuts();
       }
-
-    }, 2000);   
-
+    }, 2000);
   }
 
   // where collision is detected, removes donut collided & returns true / false
@@ -156,7 +174,6 @@ window.addEventListener("load", function () {
 
   // timer
   function startTimer() {
-
     timer.innerText = timeLeft;
 
     let timerCountdown = setInterval(function () {
@@ -168,9 +185,7 @@ window.addEventListener("load", function () {
         timeLeft--;
 
         timer.innerText = timeLeft;
-
       }
-
     }, 1000);
   }
 
@@ -178,16 +193,20 @@ window.addEventListener("load", function () {
   function stopGame() {
     console.log("game over screen activating");
 
-    const gameOverElementList = [document.getElementById("game-over"), document.getElementById("game-over-screen"), document.getElementById("game-over-text")];
+    const gameOverElementList = [
+      document.getElementById("game-over"),
+      document.getElementById("game-over-screen"),
+      document.getElementById("game-over-text"),
+    ];
 
     for (let i = 0; i < gameOverElementList.length; i++) {
-        gameOverElementList[i].style.display = "block";
+      gameOverElementList[i].style.display = "block";
     }
 
     document.removeEventListener("keydown", control);
-
-
   }
+
+  //#endregion
 
   /* =========================================
   // CALLBACK FUNCTIONS FOR EVENT LISTENERS
@@ -200,66 +219,133 @@ window.addEventListener("load", function () {
     generateDonuts();
   }
 
-  // for character jumping up
-  function jumpUp() {
+  // for character 1 jumping up
+  function char1JumpUp() {
     const upTime = setInterval(function () {
       if (character1Bottom > leftBranchBottom) {
         clearInterval(upTime); // stops character from going up once it has hit ceiling
         character1JumpUp = false; // next jump to go down
       }
 
+      // moves character 1 up
       character1Bottom += 10;
       character1.style.bottom = character1Bottom + "px";
-    }, 20);
+
+    }, 10);
   }
 
-  // for character jumping down
-  function jumpDown() {
+// for character 2 jumping up
+function char2JumpUp() {
+  const upTime = setInterval(function() {
+    if (character2Bottom > leftBranchBottom) {
+      clearInterval(upTime);
+      character2JumpUp = false;
+    }
+
+    character2Bottom += 10;
+    character2.style.bottom = character2Bottom + "px";
+
+  }, 10);
+}
+
+  // for character 1 jumping down
+  function char1JumpDown() {
     const downTime = setInterval(function () {
       if (character1Bottom <= seesawHeight) {
         clearInterval(downTime); // stops character from gg down once it has hit bottom
         character1JumpUp = true; // next jump to go up
       }
 
+      // moves character 1 down
       if (character1Bottom > seesawHeight) {
-        character1Bottom -= 5;
+        character1Bottom -= 10;
         character1.style.bottom = character1Bottom + "px";
       }
+
     }, 10);
   }
 
-  // character moves left by 15px
-  function moveCharLeft() {
+// for character 1 jumping down
+function char2JumpDown() {
+  const downTime = setInterval(function() {
+    if (character2Bottom <= seesawHeight) {
+      clearInterval(downTime);
+      character2JumpUp = true;
+    }
+
+    // moves character 2 down
+    if (character2Bottom > seesawHeight) {
+      character2Bottom -= 10;
+      character2.style.bottom = character2Bottom + "px";
+    }
+    
+  }, 10);
+}
+
+  // character 1 moves left by 15px
+  function moveChar1Left() {
     if (character1Left > character1Width * 0.5) {
       character1Left -= 15;
       character1.style.left = character1Left + "px";
     }
   }
 
-  // character moves right by 15px
-  function moveCharRight() {
+  // character 2 moves left by 15px
+  function moveChar2Left() {
+    if (character2Left < seesawWidth - character2Width * 1.5 && character2Left > seesawWidth * 0.5) {
+      character2Left -= 15;
+      character2.style.left = character2Left + "px";
+    }
+  }
+
+  // character 1 moves right by 15px
+  function moveChar1Right() {
     if (character1Left < seesawWidth - character1Width * 1.5) {
       character1Left += 15;
       character1.style.left = character1Left + "px";
     }
   }
 
+    // character 2 moves right by 15px
+    function moveChar1Right() {
+      if (character2Left < seesawWidth - character2Width * 1.5) {
+        character2Left += 15;
+        character2.style.left = character2Left + "px";
+      }
+    }
+  
   function control(e) {
     console.log(e.key);
 
     if (e.key === " " || e.key === "Spacebar") {
       if (character1JumpUp) {
-        jumpUp();
+        char1JumpUp();
+      }
+      if (character2JumpUp) {
+        char2JumpUp();
       }
       if (!character1JumpUp) {
-        jumpDown();
+        char1JumpDown();
+      }
+      if (!character2JumpUp) {
+        char2JumpDown();
       }
     }
     if (e.key == "ArrowLeft") {
-      moveCharLeft();
+      if (character1Move) {
+        moveChar1Left();
+      }
+      if (character2Move) {
+        moveChar2Left();
+      }
     }
     if (e.key == "ArrowRight") {
-      moveCharRight();
+      if (character1Move) {
+        moveChar1Right();
+      }
+      if (character2Move) {
+        moveChar2Right();
+      }
     }
   }
 
@@ -277,6 +363,7 @@ window.addEventListener("load", function () {
 
   document.addEventListener("keydown", control);
 
-  this.document.getElementById("replay-button").addEventListener("mouseup", restartGame);
-  
+  this.document
+    .getElementById("replay-button")
+    .addEventListener("mouseup", restartGame);
 });
