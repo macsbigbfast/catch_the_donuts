@@ -234,6 +234,7 @@ window.addEventListener("load", function () {
       if (character1Bottom > leftBranchBottom) {
         clearInterval(upTime); // stops character from going up once it has hit ceiling
         character1JumpUp = false; // next jump to go down
+        character1Move = false;
       }
 
       // moves character 1 up
@@ -249,6 +250,7 @@ function char2JumpUp() {
     if (character2Bottom > leftBranchBottom) {
       clearInterval(upTime);
       character2JumpUp = false;
+      character2Move = false;
     }
 
     character2Bottom += 10;
@@ -263,6 +265,7 @@ function char2JumpUp() {
       if (character1Bottom <= seesawHeight) {
         clearInterval(downTime); // stops character from gg down once it has hit bottom
         character1JumpUp = true; // next jump to go up
+        character1Move = true;
       }
 
       // moves character 1 down
@@ -280,6 +283,7 @@ function char2JumpDown() {
     if (character2Bottom <= seesawHeight) {
       clearInterval(downTime);
       character2JumpUp = true;
+      character2Move = true;
     }
 
     // moves character 2 down
