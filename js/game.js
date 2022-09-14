@@ -113,17 +113,38 @@ window.addEventListener("load", function () {
     }, 100);
 
     // sets timer for new donuts to generate
-    const donutTimeout = setTimeout(function () {
-      if (timeLeft === 0) {
-        console.log("donutTimeout ends");
-        // stopGame();
-        clearTimeout(donutTimeout);
+    function donutTimeout() {
+      if (timeLeft > 30) {
+        const timeout1 = setTimeout(function () {
+          if (timeLeft === 31) {
+            clearTimeout(timeout1);
+          }
+  
+            generateDonuts();
+        }, 2000);
+      } else if (timeLeft > 15) {
+        const timeout2 = setTimeout(function () {
+          if (timeLeft === 16) {
+            clearTimeout(timeout2);
+          }
+  
+            generateDonuts();
+        }, 1000);
+      } else if (timeLeft > 0) {
+        const timeout3 = setTimeout(function () {
+          if (timeLeft === 1) {
+            clearTimeout(timeout3);
+          }
+  
+            generateDonuts();
+        }, 500);
+      } else if (timeLeft === 0) {
+            stopGame();
       }
+      
+  }
 
-      if (timeLeft > 0) {
-        generateDonuts();
-      }
-    }, 2000);
+  donutTimeout();
 
   }
 
