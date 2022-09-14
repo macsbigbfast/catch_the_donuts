@@ -122,6 +122,7 @@ window.addEventListener("load", function () {
   // where collision is detected, removes donut collided & returns true / false
   function collisionDetection() {
     const char1Rect = character1.getBoundingClientRect();
+    const char2Rect = character2.getBoundingClientRect();
     const donutArray = [...document.querySelectorAll(".donut")]; // convert Nodelist to Array using "..."
     const donutRectArray = donutArray.map((donut) => {
       // return a new array containing the Rect result for each donut in original array
@@ -129,13 +130,21 @@ window.addEventListener("load", function () {
     });
 
     const collisionArray = donutRectArray.map((donutRect) => {
-      // compares rect between donut & character 1 for collision, and returns true/false for each donut in a new array
-      return (
-        donutRect.left < char1Rect.right &&
+      // compares rect between donut & character 1 & character 2 for collision, and returns true/false for each donut in a new array
+      if (
+        (donutRect.left < char1Rect.right &&
         donutRect.top < char1Rect.bottom &&
         donutRect.right > char1Rect.left &&
-        donutRect.bottom > char1Rect.top
-      );
+        donutRect.bottom > char1Rect.top) || 
+        (donutRect.left < char2Rect.right &&
+        donutRect.top < char2Rect.bottom &&
+        donutRect.right > char2Rect.left &&
+        donutRect.bottom > char2Rect.top)
+      ) { return true;
+      } else {
+        return false;
+      }
+
     });
 
     for (let i = 0; i < collisionArray.length; i++) {
