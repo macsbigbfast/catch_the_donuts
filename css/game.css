@@ -119,6 +119,9 @@ h2, h3 {
 
 .popup-text {
     position:absolute;
+    color: red;
+    font-size: 2em;
+    font-weight: bold;
 } 
 
 #game-over {
