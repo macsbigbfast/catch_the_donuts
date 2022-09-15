@@ -4,13 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Londrina+Shadow&display=swap" rel="stylesheet">
     <link href="css/start_screen.css" rel="stylesheet" />
     <title>Catch the Donuts</title>
 </head>
 <body>
+    <div id="title">
+        <h1>
+            <span>C</span>
+            <span>A</span>
+            <span>T</span>
+            <span>C</span>
+            <span>H</span>
+            <span>&nbsp</span>
+            <span>T</span>
+            <span>H</span>
+            <span>E</span>
+            <span>&nbsp</span>
+            <span>D</span>
+            <span>O</span>
+            <span>N</span>
+            <span>U</span>
+            <span>T</span>
+            <span>S</span>
+        </h1>
+    </div>
     <div id="start-screen" class="screen">
         <button id="start-game-button">Start Game</button>
+        <button id="instructions-button">View Instructions</button>
     </div>
+    <div id="instruction-background">
+    </div>
+    <div id="instruction-box">
+        <input id="close-instructions-button" type="image" src="images/black-circle-close-button.png" alt="close">
+        <div id="instruction-text">
+            <p>Oh no, the cats are hungry! Luckily there are some donuts flying around. Help the cats catch the donuts to fill their tummies! </p>
+            <p>Use the <span>spacebar</span> to jump, and the <span>left & right arrow keys</span> to move around. You have 60 seconds before the donuts stop flying!</p>
+        </div>
+    </div>
+    <footer>
+        <h4>Inspired by Neopets game, Hasee Bounce</h4>
+        <a href="" target="_blank">
+            <img src="images/GitHub_Logo.png" alt="GitHub" width="100px">
+        </a>
+    </footer>
     <script src="js/start_screen.js" charset="utf-8"></script>
 </body>
 </html
