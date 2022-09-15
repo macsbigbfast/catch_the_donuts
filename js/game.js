@@ -396,7 +396,7 @@ function char2JumpDown() {
 
   function restartGame(e) {
     if (e.button === 0) {
-      window.location.replace("start_screen.html");
+      window.location.replace("index.html");
     }
   }
 
