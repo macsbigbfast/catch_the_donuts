@@ -185,7 +185,7 @@ window.addEventListener("load", function () {
         // if true, create a pop-up message at point of collision showing points earned
         const popupText = document.createElement("h3");
         popupText.className = "popup-text";
-        popupText.innerText = "+1";
+        popupText.innerText = "+10";
         donutArray[i].parentNode.append(popupText);
         popupText.style.left = donutArray[i].style.left;
         popupText.style.bottom = donutArray[i].style.bottom;
