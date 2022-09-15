@@ -105,7 +105,7 @@ window.addEventListener("load", function () {
     //sets time interval for sliding donuts
     const donutInterval = setInterval(function () {
       if (timeLeft === 0) {
-        console.log("donutInterval ends");
+        // console.log("donutInterval ends");
         clearInterval(donutInterval);
       }
 
@@ -196,7 +196,7 @@ window.addEventListener("load", function () {
         }, 1500);
 
         // update points
-        points++;
+        points += 10;
         pointUpdate();
 
         // once collided, remove donut

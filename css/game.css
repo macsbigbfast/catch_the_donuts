@@ -13,6 +13,7 @@ body {
 
 #title h1 {
     font-size: 3em;
+    margin: 0.5em;
 }
 
 #title h1 span:nth-child(5n + 1) {
@@ -54,7 +55,7 @@ body {
 }
 
 #countdown {
-    background-color: #EC2A9F;
+    background-color: #00CEB2;
 }
 
 h2, h3 {
@@ -88,13 +89,14 @@ h2, h3 {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
+    background-image: url("../images/game-background.jpeg");
+    background-size: contain;
 }
 
 #left-branch, #right-branch {
     height: 20px;
     width: 45%;
-    background-color: #786d3e;
+    background-color: #8e6b29;
     position: absolute;
     bottom: 300px;
 }
@@ -105,7 +107,6 @@ h2, h3 {
 
 #flying-objects {
     height: 350px;
-    /* overflow: hidden; */
 }
 
 .donut {
@@ -113,7 +114,7 @@ h2, h3 {
     width: 70px;
     border-radius: 50%;
     /* background-color: greenyellow; */
-    background-image: url("../images/Base_donut.png");
+    background-image: url("../images/Pink_Donut.png");
     background-size: 100%;
     position: absolute;
 }
@@ -127,18 +128,22 @@ h2, h3 {
 }
 
 #character1 {
-    height: 50px;
-    width: 50px;
-    background-color: red;
+    height: 90px;
+    width: 90px;
+    /* background-color: red; */
+    background-image: url("../images/cat.webp");
+    background-size: 100%;
     position: absolute;
     bottom: 310px;
     left: 25%;
 }
 
 #character2 {
-    height: 50px;
-    width: 50px;
-    background-color: palevioletred;
+    height: 90px;
+    width: 90px;
+    /* background-color: palevioletred; */
+    background-image: url("../images/cat.webp");
+    background-size: 100%;
     position: absolute;
     bottom: 15px;
     left: 75%;  
@@ -146,7 +151,7 @@ h2, h3 {
 
 .popup-text {
     position:absolute;
-    color: red;
+    color: white;
     font-size: 2em;
     font-weight: bold;
 } 
@@ -185,7 +190,6 @@ h2, h3 {
     display: none;
     font-size: 4em;
     margin-top: 15%;
-    margin-bottom: 5%;
 }
 
 #replay-button {
@@ -194,4 +198,8 @@ h2, h3 {
 
 footer {
     font-family: 'Klee One', cursive;
+}
+
+footer h4 {
+    margin-bottom: 0.5em;
 }
