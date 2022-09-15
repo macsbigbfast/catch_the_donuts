@@ -3,6 +3,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Londrina Shadow', cursive;
+    background-color: rgb(246, 246, 232);
 }
 
 #title h1 {
@@ -30,11 +31,88 @@ body {
 }
 
 #start-game-button {
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 1em auto;
     background-color: #ffc500;
     font-family: 'Londrina Shadow', cursive;
-    font-size: 3em;
+    font-size: 5em;
     border-radius: 25px;
-    padding: 10px;
+    padding: 0.2em;
     border: thick solid black;
+    box-shadow: 10px 10px grey;
+}
 
+#instructions-button {
+    display: block;
+    margin: 1em auto;
+    font-family: 'Klee One', cursive;
+    font-size: 1.5em;
+    border-radius: 25px;
+    padding: 1em;
+    border: thick solid black;
+    box-shadow: 7px 7px grey;
+}
+
+#instruction-background {
+    display: none;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    background-color: grey;
+    text-align: center;
+}
+
+#instruction-box {
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    bottom: 30%;
+    right: 25%;
+    z-index: 10;
+    opacity: 1;
+    height: 40%;
+    width: 50%;
+    background-color: #ffc500;
+    border-radius: 25px;
+    border: thick solid white;
+}
+
+#close-instructions-button {
+    display: none;
+    height: 2.5em;
+    width: 2.5em;
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+}
+
+#instruction-text {
+    display: none;
+    margin-top: 3.5em;
+}
+
+#instruction-text p {
+    font-family: 'Klee One', cursive;
+    font-size: 1.2em;
+    margin: 1em;
+}
+
+#instruction-text p span {
+    color: red;
+}
+
+footer {
+    font-family: 'Klee One', cursive;
+}
+
+footer h4 {
+    margin-top: 5em;
 }
