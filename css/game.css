@@ -8,6 +8,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Londrina Shadow', cursive;
+    background-color: rgb(246, 246, 232);
 }
 
 #title h1 {
@@ -49,12 +50,33 @@ body {
 }
 
 #point-counter {
-    background-color: #ffc500;
+    background-color: #FEDE0C;
+}
+
+#countdown {
+    background-color: #EC2A9F;
 }
 
 h2, h3 {
     margin-top: 10px;
     margin-bottom: 10px;
+
+}
+
+#point-counter h3 {
+    background-color: white;
+    border-radius: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#countdown h3 {
+    background-color: white;
+    border-radius: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #action-area {
@@ -66,6 +88,7 @@ h2, h3 {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 #left-branch, #right-branch {
@@ -160,7 +183,7 @@ h2, h3 {
 
 #game-over-text {
     display: none;
-    font-size: 3em;
+    font-size: 5em;
     margin-top: 15%;
     margin-bottom: 5%;
 }
