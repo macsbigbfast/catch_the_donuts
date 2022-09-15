@@ -189,7 +189,7 @@ h2, h3 {
 #game-over-text {
     display: none;
     font-size: 4em;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 #replay-button {
