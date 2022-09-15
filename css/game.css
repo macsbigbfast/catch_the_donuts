@@ -8,10 +8,12 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Londrina Shadow', cursive;
+    background-color: rgb(246, 246, 232);
 }
 
 #title h1 {
     font-size: 3em;
+    margin: 0.5em;
 }
 
 #title h1 span:nth-child(5n + 1) {
@@ -49,12 +51,33 @@ body {
 }
 
 #point-counter {
-    background-color: #ffc500;
+    background-color: #FEDE0C;
+}
+
+#countdown {
+    background-color: #00CEB2;
 }
 
 h2, h3 {
     margin-top: 10px;
     margin-bottom: 10px;
+
+}
+
+#point-counter h3 {
+    background-color: white;
+    border-radius: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#countdown h3 {
+    background-color: white;
+    border-radius: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #action-area {
@@ -66,26 +89,33 @@ h2, h3 {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    background-image: url("../images/game-background.jpeg");
+    background-size: contain;
 }
 
-#left-branch {
+#left-branch, #right-branch {
     height: 20px;
-    width: 100%;
-    background-color: #786d3e;
+    width: 45%;
+    background-color: #8e6b29;
     position: absolute;
     bottom: 300px;
 }
 
+#right-branch {
+    right: 0;
+}
+
 #flying-objects {
     height: 350px;
-    /* overflow: hidden; */
 }
 
 .donut {
-    height: 30px;
-    width: 30px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+    background-image: url("../images/Pink_Donut.png");
+    background-size: 100%;
     position: absolute;
 }
 
@@ -98,16 +128,32 @@ h2, h3 {
 }
 
 #character1 {
-    height: 30px;
-    width: 30px;
-    background-color: red;
+    height: 90px;
+    width: 90px;
+    /* background-color: red; */
+    background-image: url("../images/cat.webp");
+    background-size: 100%;
+    position: absolute;
+    bottom: 310px;
+    left: 25%;
+}
+
+#character2 {
+    height: 90px;
+    width: 90px;
+    /* background-color: palevioletred; */
+    background-image: url("../images/cat.webp");
+    background-size: 100%;
     position: absolute;
     bottom: 15px;
-    left: 50%;
+    left: 75%;  
 }
 
 .popup-text {
     position:absolute;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
 } 
 
 #game-over {
@@ -142,7 +188,7 @@ h2, h3 {
 
 #game-over-text {
     display: none;
-    font-size: 2.5em;
+    font-size: 4em;
     margin-top: 15%;
 }
 
@@ -152,4 +198,8 @@ h2, h3 {
 
 footer {
     font-family: 'Klee One', cursive;
+}
+
+footer h4 {
+    margin-bottom: 0.5em;
 }
