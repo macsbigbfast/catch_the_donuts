@@ -1,12 +1,10 @@
-# catch_the_donuts
-
 # Project Title
 
 Welcome! I have published here my first project created during software engineering bootcamp - a game developed using HTML, CSS and JavaScript.
 
-## Project Description
+# Project Description
 
-This game is inspired by the Neopets game, Hasee Bounce. You can watch a video of the original gameplay [here](https://www.youtube.com/watch?v=t-AAhkeYDE8&ab_channel=SparkleSillies). 
+This game, Catch the Donuts, is inspired by the Neopets game, Hasee Bounce. You can watch a video of the original gameplay [here](https://www.youtube.com/watch?v=t-AAhkeYDE8&ab_channel=SparkleSillies). 
 
 Within the game, the player has 2 characters that they can control, when it's the character's turn to move. There are donuts that fly across the screen, and the goal of the game is to catch as many donuts as possible within the 60 seconds game duration.
 
@@ -16,7 +14,7 @@ The game I have developed is a watered-down version of the original. I would lik
 * Making the donuts fly in from left & the right
 * Build a see-saw for the characters to jump on
 
-### Credits and Acknowledgements
+# Credits and Acknowledgements
 
 Below are some of the resources used throughout the course of building this game:
 
@@ -33,6 +31,6 @@ Below are some of the online tutorials that proved relevant to the building of t
 * https://www.youtube.com/watch?v=FwLMz7jMRac&ab_channel=DavidReid
 * https://www.youtube.com/watch?v=47eXVRJKdkU&ab_channel=WebDevSimplified
 
-#### License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
