@@ -70,7 +70,7 @@ window.addEventListener("load", function () {
 
   // Generate random donuts
   function generateDonuts() {
-    const donutBottom = randomIntFromRange(70, 300); // randomly generate a height b/w the seesaw & branches
+    const donutBottom = randomIntFromRange(100, 300); // randomly generate a height b/w the seesaw & branches
     let donutLeft = 0; //lets donut start from out of view
     const donut = document.createElement("div");
     donut.className = "donut";
